@@ -6,5 +6,7 @@ package com.milai.cvshow
  * 主要功能：
  */
 interface OnFragmentInteractionListener {
-    fun onitemClick(id: String)
+    fun onitemClick(id: String, codePic: Int)
+
+    fun onBackPresee()
 }

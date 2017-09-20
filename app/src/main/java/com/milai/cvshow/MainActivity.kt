@@ -2,12 +2,15 @@ package com.milai.cvshow
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.app.FragmentManager
-import android.widget.FrameLayout
-import android.widget.GridLayout
-import android.widget.Toast
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 
 class MainActivity : AppCompatActivity(),OnFragmentInteractionListener {
+
+    val gridFragment by lazy { GridFragment() }
+    val detailFragment by lazy { DetailFragment() }
+    val ivCode by lazy { findViewById<ImageView>(R.id.iv_code)}
+    val glide by lazy { Glide.with(this)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,14 +19,25 @@ class MainActivity : AppCompatActivity(),OnFragmentInteractionListener {
     }
 
     private fun initFragment() {
-        val fragmentManager = this.supportFragmentManager
-        val gridFragment = GridFragment()
-        val beginTransaction = fragmentManager.beginTransaction()
-        beginTransaction.add(R.id.frame, gridFragment, "grid")
-        beginTransaction.commit()
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.add(R.id.frame, gridFragment, "grid")
+        transaction.commit()
     }
 
-    override fun onitemClick(id: String) {
-        Toast.makeText(this,"item click $id",Toast.LENGTH_SHORT).show()
+    override fun onitemClick(id: String, codePic:Int) {
+        glide.load(codePic).error(R.drawable.main_code).into(ivCode)
+        detailFragment.changeUrl(id)
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(R.anim.frag_in,0)
+        transaction.add(R.id.frame, detailFragment, "detail")
+        transaction.commit()
+    }
+
+    override fun onBackPresee() {
+        glide.load(R.drawable.main_code).into(ivCode)
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.setCustomAnimations(0,R.anim.frag_exit)
+        transaction.remove(supportFragmentManager.findFragmentByTag("detail"))
+        transaction.commit()
     }
 }

@@ -1,0 +1,42 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.milai.cvshow.DetailFragment"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:paddingBottom="20dp"
+    android:paddingTop="15dp"
+    android:orientation="vertical"
+    android:background="#eeeeee">
+
+    <TextView
+        android:id="@+id/bt_back"
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        android:background="@drawable/shape_bt_grey_line"
+        android:text="返回"
+        android:gravity="center"
+        />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shape_iv_grey_line">
+
+        <WebView
+            android:id="@+id/web"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </WebView>
+    </FrameLayout>
+</LinearLayout>

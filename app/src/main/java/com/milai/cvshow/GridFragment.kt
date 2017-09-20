@@ -22,18 +22,19 @@ class GridFragment : Fragment() {
         if (fragView == null) {
             fragView = inflater!!.inflate(R.layout.fragment_grid, container, false)
             val recyclerView = fragView?.findViewById<RecyclerView>(R.id.grid)
-            val gridLayout = GridLayoutManager(this.activity, 3, GridLayout.HORIZONTAL, false)
+            val gridLayout = GridLayoutManager(this.activity, 3, GridLayout.VERTICAL, false)
 
             recyclerView?.layoutManager = gridLayout
-            val picList = listOf<AdNews>(AdNews("1","http://b.milaipay.com/Public/Uploads/applet/59b645d5d0cd6.jpg")
-                    , AdNews("2","http://b.milaipay.com/Public/Uploads/applet/59b7830e72aeb.jpg")
-                    , AdNews("3","http://b.milaipay.com/Public/Uploads/applet/59b24dd04bdc4.jpg")
-                    , AdNews("4","http://b.milaipay.com/Public/Uploads/applet/59ae3c29b9543.jpg")
-                    , AdNews("5","http://b.milaipay.com/Public/Uploads/applet/59a90a0052471.png")
-                    , AdNews("6","http://b.milaipay.com/Public/Uploads/applet/59a8f6bc238a1.png")
-                    , AdNews("7","http://b.milaipay.com/Public/Uploads/applet/59a1843d7f7cc.png")
-                    , AdNews("8","http://b.milaipay.com/Public/Uploads/applet/598ec8658c5f9.jpg")
-                    , AdNews("9","http://b.milaipay.com/Public/Uploads/applet/598c06df8d30b.png"))
+            val picList = listOf(
+                    AdNews("657", R.drawable.zx, "周学", R.drawable.zx_code)
+                    , AdNews("665", R.drawable.qk, "钱琨", R.drawable.qk_code)
+                    , AdNews("900", R.drawable.zw, "张武", R.drawable.zw_code)
+                    , AdNews("1105", R.drawable.sjd, "沈敬东", R.drawable.sjd_code)
+                    , AdNews("1104", R.drawable.mc, "马聪", R.drawable.mc_code)
+                    , AdNews("867", R.drawable.lad, "鲁安东", R.drawable.lad_code)
+                    , AdNews("1066", R.drawable.zhuangw, "庄炜", R.drawable.zhuangw_code)
+                    , AdNews("773", R.drawable.`as`, "阿束", R.drawable.as_code)
+                    , AdNews("628", R.drawable.wayelee, "WAYE LEE", R.drawable.wayelee_code))
             val myGridAdapter = MyGridAdapter(this.activity, picList)
             recyclerView?.adapter = myGridAdapter
         }

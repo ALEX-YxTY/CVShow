@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.milai.cvshow.MainActivity">
 
-    <RelativeLayout
-        android:id="@+id/introduce"
-        android:layout_width="320dp"
-        android:layout_height="match_parent"
-        android:background="@drawable/timg"
-        android:layout_alignParentRight="true"
-        android:elevation="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="120dp"
-            android:text="这是一个简介"/>
-    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_width="0dp"
+        android:layout_weight="21"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/introduce"/>
+
+    <RelativeLayout
+        android:id="@+id/introduce"
+        android:layout_width="0dp"
+        android:layout_weight="9"
+        android:layout_height="match_parent"
+        android:background="@drawable/intro"
+        android:layout_alignParentRight="true"
+        android:elevation="10dp">
+
+        <ImageView
+            android:id="@+id/iv_code"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="280dp"
+            android:src="@drawable/main_code"
+            android:scaleType="centerInside"/>
+    </RelativeLayout>
 
 
-</RelativeLayout>
+
+</LinearLayout>

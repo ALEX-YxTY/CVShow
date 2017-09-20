@@ -5,4 +5,4 @@ package com.milai.cvshow
  *
  * 主要功能：
  */
-data class AdNews(val id: String, val pic: String)
+data class AdNews(val id: String, val pic: Int, val name: String, val code: Int)

@@ -6,7 +6,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.squareup.picasso.Picasso
 
 /**
  * Created by Administrator on 2017/9/14.
@@ -15,19 +14,18 @@ import com.squareup.picasso.Picasso
  */
 class MyGridAdapter(private val ctx: Context, private val picList:List<AdNews>): RecyclerView.Adapter<PicViewHolder>() {
 
-    val picasso = Picasso.with(ctx)
+    val glide = Glide.with(ctx)
 
     override fun getItemCount(): Int {
         return picList.size
     }
 
     override fun onBindViewHolder(holder: PicViewHolder?, position: Int) {
-        picasso.load("http://b.milaipay.com/Public/Uploads/applet/59b7830e72aeb.jpg").into(holder?.ivHead)
+        val adNews = picList[position]
+        glide.load(adNews.pic).transform(RoundTransform(ctx)).into(holder?.ivHead)
+        holder?.name?.text = adNews.name
         holder?.itemView?.setOnClickListener{
-            (ctx as OnFragmentInteractionListener).onitemClick("$position")
-//            val intent = Intent(ctx, NewsDetailActivity::class.java)
-//            intent.putExtra("id", picList[position].id)
-//            ctx.startActivity(intent)
+            (ctx as OnFragmentInteractionListener).onitemClick(adNews.id, adNews.code)
         }
     }
 
